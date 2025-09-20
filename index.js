@@ -24,11 +24,11 @@ function initModel() {
  */
 export function logger(options = {}) {
   const { mongoUri } = options;
-  if (!mongoUri) throw new Error("cuvette-api-tracer: mongoUri is required");
+//   if (!mongoUri) throw new Error("cuvette-api-tracer: mongoUri is required");
 
-  mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("cuvette-api-tracer: MongoDB connected"))
-    .catch(err => console.error("cuvette-api-tracer: MongoDB connection error", err));
+//   mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+//     .then(() => console.log("cuvette-api-tracer: MongoDB connected"))
+//     .catch(err => console.error("cuvette-api-tracer: MongoDB connection error", err));
 
   initModel();
 
@@ -42,6 +42,7 @@ export function logger(options = {}) {
         params: req.params,
         headers: req.headers
       });
+    //   console.log(req,res);
       await log.save();
     } catch (err) {
       console.error("cuvette-api-tracer: failed to save log", err);
