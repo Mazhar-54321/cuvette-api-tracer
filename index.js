@@ -4,11 +4,11 @@ const dotenv = require('dotenv');
 dotenv.config();
 function logger(){
     return (req,res,next)=>{
-        console.log(req);
+        console.log(`${req.method} ${req.url}`, req.body);
         next();
     }
 }
-app.listen(process.env.PORT,()=>{
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Server running on port ${port}`));
 
-})
 module.exports = {logger}
