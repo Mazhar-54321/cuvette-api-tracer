@@ -11,3 +11,4 @@ function logger(){
 app.listen(process.env.PORT,()=>{
 
 })
+module.exports = {logger}
