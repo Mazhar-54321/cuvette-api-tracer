@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import database from "./database.js";
+import express from 'express'
 database();
 // Request log schema
 const requestSchema = new mongoose.Schema({
@@ -50,3 +51,7 @@ export function logger(options = {}) {
     next();
   };
 }
+const app = express();
+app.use(express.json())
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Central logger running on port ${PORT}`));
